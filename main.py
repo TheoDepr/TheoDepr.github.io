@@ -1,4 +1,6 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
+
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
@@ -7,9 +9,9 @@ def artwork(i):
     st.divider()
     st.image("images/" + str(i) + ".jpg")
     st.write("Artwork " + str(i))
+    st.audio("audio/" + str(i) + ".mp3")
     st.divider()
     return 
-
 
 def run():
     st.set_page_config(
@@ -29,7 +31,6 @@ def run():
     st.write("### Zaal 6")
     st.write("### Zaal 7")
     st.write("### Zaal 8")
-
 
 if __name__ == "__main__":
     run()

@@ -26,6 +26,8 @@ stlite.mount(
 
 ####
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
+
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
@@ -34,9 +36,9 @@ def artwork(i):
     st.divider()
     st.image("images/" + str(i) + ".jpg")
     st.write("Artwork " + str(i))
+    st.audio("audio/" + str(i) + ".mp3")
     st.divider()
     return 
-
 
 def run():
     st.set_page_config(
@@ -57,7 +59,6 @@ def run():
     st.write("### Zaal 7")
     st.write("### Zaal 8")
 
-
 if __name__ == "__main__":
     run()
 ####
@@ -76,6 +77,21 @@ textColor="#6886b1"
 `,
 
 "images/1.jpg" : {url:"./images/1.jpg"},
+"images/2.jpg" : {url:"./images/2.jpg"},
+"images/3.jpg" : {url:"./images/3.jpg"},
+"images/4.jpg" : {url:"./images/4.jpg"},
+"images/5.jpg" : {url:"./images/5.jpg"},
+"images/6.jpg" : {url:"./images/6.jpg"},
+"images/7.jpg" : {url:"./images/7.jpg"},
+"images/8.jpg" : {url:"./images/8.jpg"},
+"images/9.jpg" : {url:"./images/9.jpg"},
+"images/10.jpg" : {url:"./images/10.jpg"},
+"images/11.jpg" : {url:"./images/11.jpg"},
+"images/12.jpg" : {url:"./images/12.jpg"},
+"images/13.jpg" : {url:"./images/13.jpg"},
+"images/14.jpg" : {url:"./images/14.jpg"},
+
+
 },
   },
   document.getElementById("root")
