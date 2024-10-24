@@ -32,17 +32,31 @@ from streamlit.logger import get_logger
 LOGGER = get_logger(__name__)
 
 def artwork(i):
+    
     if i == 0:
         return
+    
     st.divider()
+
     try:
       st.image("images/" + str(i) + ".jpg", use_column_width=True)
       st.write("Artwork " + str(i))
       st.audio("audio/" + str(i) + ".mp3")
     except:
         LOGGER.error("Error loading image or audio")
+
     st.divider()
+
     return 
+
+def next():
+    st.session_state["step"] += 1
+    return
+
+def previous():
+    if st.session_state["step"] > 0:
+      st.session_state["step"] -= 1
+    return
 
 def run():
     st.set_page_config(
@@ -53,14 +67,13 @@ def run():
     if "step" not in st.session_state:
       st.session_state["step"] = 0
     
-    st.write("# Jubilee ")
-    st.write("## Ron Mueck")
+    st.write("## Paul & Mieke")
 
     artwork(st.session_state["step"])
     
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 1, 1])
     with col1:
-      st.button("Vorige", on_click=lambda: st.session_state.update(step=st.session_state["step"] - 1))
+      st.button("Vorige", on_click=lambda: st.session_state.update(step=max(st.session_state["step"] - 1, 0)))
     with col3:
       st.button("Volgende", type='primary', on_click=lambda: st.session_state.update(step=st.session_state["step"] + 1))
 
