@@ -4,7 +4,6 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
-
 if "step" not in st.session_state:
       st.session_state["step"] = 0
 
@@ -27,7 +26,6 @@ if "zaal_dict" not in st.session_state:
       15: "Landgoed ",
       }
 
-
 def artwork(i):
     
     if i == 0:
@@ -47,7 +45,6 @@ def artwork(i):
 
     return 
 
-
 def run():
     st.set_page_config(
         page_title="Jubilee",
@@ -65,7 +62,10 @@ def run():
     st.write("## Paul & Mieke")
 
     artwork(st.session_state["step"])
-    
+
+    if st.session_state["step"] == 16:
+      st.balloons()
+
     st.button("Volgende kunstwerk", type='primary', on_click=lambda: st.session_state.update(step=min(st.session_state["step"] + 1, 16)))
     st.button("Vorige", on_click=lambda: st.session_state.update(step=max(st.session_state["step"] - 1, 0)))
 
