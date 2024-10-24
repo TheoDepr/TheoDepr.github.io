@@ -10,8 +10,8 @@ with open('index.html', 'r') as index_file:
 
 # Step 3: Replace the selected text in index.html with the content of main.py
 # Replace text between #### and #### in index.html with the content of main.py
-start_marker = "####"
-end_marker = "####"
+start_marker = "#--#"
+end_marker = "#--#"
 
 start_index = index_content.find(start_marker)
 end_index = index_content.find(end_marker, start_index + len(start_marker))
